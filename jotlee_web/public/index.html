@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jotlee</title>
+    <script src='/javascripts/thirdparty/jquery.js' ></script>
+    <style>
+	@font-face {
+	font-family: justjot;
+	src: url("/resources/ColabLig-webfont.eot?") format("eot"), url("/resources/ColabLig-webfont.woff") format("woff"), url("/resources/ColabLig-webfont.ttf") format("truetype"); 
+	}
+	
+	body {
+	font-family: justjot; 
+	font-size: 14pt; 
+	text-align:justify; 
+	font-weight: 100
+	}
+    
+    .authlogo
+    {
+    	border-width:0px;
+    	border-style:none
+    }
+    .authlogo:hover
+    {
+    	border-width: 1px;
+    	border-style: solid
+    }
+    .authlogo
+    {
+    	height: 40px;
+    	width: 100px
+    	border-width:0px
+    }
+    </style>
+  </head>
+  <body>
+    <script>
+    /*function reconnectProc()
+	{
+		$.ajax({type:'POST', url: '/refreshsession', data: 'dummy'})
+        	.done(function () {
+        	    $('#ready').text("ready");
+        	}).error(function (err) {
+            	//console.log("http request failed (probably server not up yet)");
+            	setTimeout(reconnectProc, 3000);
+        	});				
+	}
+    
+    $(reconnectProc);*/
+    </script>
+   
+    <center>
+    <br />
+    <br />
+    <br />
+    <br />
+    <img src='/images/jotlee.png' />
+    <br />
+    <br />
+    <br />
+    <br />
+    Log in with:
+    <br />
+    <br />
+    <table border='0' cellpadding='15px'>
+    <tr><td>
+	<a id='googlelogin' href='/auth/google' class='authlink'><img class='authlogo' src='/images/google.jpeg' /></a>
+	</td>
+	<td>
+	<a id='facebooklogin' href="/auth/facebook"  class='authlink'><img class='authlogo' src='/images/facebook.jpeg' /></a>
+	</td>
+	<td>
+	<a id='twitterlogin' href="/auth/twitter" class='authlink'><img class='authlogo' src='/images/twitter.jpeg' /></a>
+	</td>
+	</tr>
+	</table>
+	<div id='status'></div>
+	</center>
+ </body>
+</html>

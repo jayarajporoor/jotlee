@@ -1,0 +1,36 @@
+    {"redis-2.2":[
+    {
+    "name":"redis-example",
+    "label":"redis-2.2",
+    "plan":"free",
+    "tags":["redis","redis-2.2","key-value","nosql"],
+    "credentials":{
+    "hostname":"localhost",
+    "host":"localhost",
+    "port":6379,
+    "password":"",
+    "name":"9e3f3a9c-82ba-4c2e-bc83-b498e5447251"
+    }
+    }
+    ],
+
+"mysql-5.1":[
+{
+"name":"mysql",
+"label":"mysql-5.1",
+"plan":"free",
+"tags":["mysql","mysql-5.1","relational"],
+"credentials":{
+"name":"jotlee",
+"hostname":"localhost",
+"host":"localhost",
+"port":3306,
+"user":"root",
+"username":"root",
+"password":"root"
+}
+
+}
+]
+
+}

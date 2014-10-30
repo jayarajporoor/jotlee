@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head><title>Your Jotlee settings</title>
+<style type="text/css">
+@font-face {
+font-family: justjot;
+src: url("ColabLig-webfont.ttf"); 
+}
+
+@font-face {
+font-family: justjot;
+src: url("ColabLig-webfont.eot?") format("eot"), url("ColabLig-webfont.woff") format("woff"), url("ColabLig-webfont.ttf") format("truetype"); 
+}
+
+.content {
+font-family: justjot; 
+font-size: 14pt; 
+text-align:justify; 
+font-weight: 100
+}
+
+.simplelink{
+text-decoration:none;
+}
+</style>
+<script src='/javascripts/thirdparty/jquery.js'></script>
+<script src='/javascripts/thirdparty/jstz.min.js'></script>
+<script src='/javascripts/utils.js'></script>
+<script>
+ var tzname = "";
+ var isCheckingName = false;
+ var checkedUserName = "";
+ 
+ function getCurrentUser()
+ {
+ 	$.ajax( {
+ 		type: "POST",
+ 		url : "/user/getcurrent",
+ 		contentType: "application/json",
+ 		data : "{}",
+ 		statusCode: {
+ 			401 : function(){window.location = '/';}
+ 		}
+ 		} ).done(function(user)
+ 				{
+			 		$('#welcomename').text(user.displayName); 			
+ 				 	$('#displayname').val(user.displayName);
+ 				 	$('#username').val(user.extName); 	
+ 				 	$('#email').val(user.email); 	
+ 					
+ 				}).
+ 		fail(function(xhr, status, err) {
+ 			if(xhr.status == 401)
+ 				window.location = "/";
+ 			else
+ 			{
+ 				//do nothing.
+ 			}
+ 		});
+ 	
+ }
+
+ $(function(){
+	getCurrentUser();
+	tzname = jstz.determine().name();
+	$('#timezone').text(tzname);
+ 	$('#checkusername').hover(function() 
+ 		{		   
+ 			$(this).css('font-weight', 'bold');
+ 		}, function(){
+ 		   $(this).css('font-weight', 'normal');
+ 		}).click( 
+	 	function(event)
+	 	{
+	 		event.preventDefault(); 		
+	 		var userName = $.trim($('#username').val());
+	 		if(userName == '')
+	 			return;
+	 		var re = /[^a-zA-Z0-9_]/g;
+ 		    if(re.test(userName))
+			{
+ 		    	$('#name_availability').text('Username can only contain alphanumeric characters and underscore');
+ 		    	return;
+			}
+	 		if(isCheckingName) return;
+	 		isCheckingName = true;
+			$('#checkusername').text('checking...'); 		
+	 		$.ajax( {url: '/user/checkname', type: 'POST', contentType: "application/json", dataType: "json", 
+	 				data : JSON.stringify({userName :  userName}) } ).
+	 			done(function(resp)
+	 			 {
+	 			    if(resp.available)
+	 			    {
+	 			    	checkedUserName = resp.userName;
+						$('#name_availability').html('[Name ' + resp.userName + " is available.]"); 			    	
+	 			    }
+	 			    else
+	 			    {
+						$('#name_availability').html('[Name ' + resp.userName + " is not available.]"); 			    	
+	 			    }
+	 			 }).
+	 			 fail(function(xhr, status, err){
+	 			 		if(xhr.status == 401)
+	 			 			window.location = "/";
+	 			 		else
+							$('#name_availability').text('[Communication error.]'); 			 	
+	 			 }). 			 
+	 			 always(function(){
+	 			 		isCheckingName = false;
+	 			 		$('a[name=checkusername]').text('check availability');
+	 			 		});
+	 	});
+	 	
+	 	$('#submit').click(function(event){
+
+	 			event.preventDefault();
+	 			var user = {userName: $.trim($('#username').val()),
+	 						email: $.trim($('#email').val()), 
+	 						displayName: $.trim($('#displayname').val()),
+	 						allowFollowers : $('#allow_followers').prop('checked'),
+	 						inviteCode: $.trim($('#invite_code').val())
+	 					   };
+	 			if(user.userName == '')
+	 				$('#submitmsg').html('Please enter user name');
+	 			else
+	 			if(user.userName != checkedUserName)
+	 				$('#submitmsg').html('Please check availability of the user name');
+	 			else
+	 			{
+	 				var userData = JSON.stringify(user);
+	 				$('#submitmsg').html('Submitting...');
+			 		$.ajax( {url: '/user/create', type: 'POST', contentType: "application/json", dataType: "json", 
+			 				data : userData } ).
+			 			done(function(resp)
+			 			 {
+			 			 	if(!resp.error)
+			 			 	{
+			 			 		$('#submitmsg').text('[Successfully registered]');
+			 			 		window.location = "/myjots";
+			 			 	}
+			 			 	else
+			 			 		$('#submitmsg').text(resp.error);
+			 			 }).
+			 			 fail(function(xhr, status, err){
+			 			 		if(xhr.status == 401)
+			 			 			window.location = "/";
+			 			 		else
+									$('#submitmsg').text('[Communication error: ' + err +']'); 			 	
+			 			 });	 					 				
+	 			}	 				
+	 		});
+
+});
+
+ </script>
+</head>
+<body class='content'>
+<h3>Welcome <span id='welcomename'></span>!</h3>
+<p>Please fill in some essential information before starting to use Jotlee.</p>
+<form name=userinfo id=userinfo>
+<table border='0' cellspacing='5px'>
+<tr><td>User name:</td>
+<td><input type='text' name='username' id='username' size='20' /> 
+<a name='checkusername' id='checkusername' href='#' class='simplelink'>check availability</a> 
+<span id='name_availability'></span>
+</td></tr>
+<tr><td>Screen name:</td>
+<td><input type='text' name='displayname' id='displayname' size='50' /></td></tr>
+<tr><td>Email:</td>
+<td><input type='text' id='email' size='25' /></td></tr>
+<tr><td>Invitation Code:</td>
+<td><input type='text' id='invite_code' size='25' /></td></tr>
+<tr><td><input type='checkbox' id='allow_followers' value='yes' /> Allow Followers</td><td></td></tr>
+<tr><td>Detected Timezone: </td><td><span id='timezone'></span> (must be correct for Jotlee to work properly)</td></tr>
+<tr><td><input type='button' id='submit' value='Submit' /> </td><td><span id='submitmsg' style='color:red'></span></td></tr>
+</table>  
+</form>
+</body>
+</html>

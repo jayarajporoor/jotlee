@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>My Jots</title>
+
+<!--
+ src: url('GraublauWeb.eot?') format('eot'), url('GraublauWeb.woff') format('woff'), url('GraublauWeb.ttf') format('truetype');
+-->
+
+<link href="/stylesheets/myjots.css" rel="stylesheet" type="text/css">
+
+<script src="/javascripts/thirdparty/jquery.js"></script>
+<script src="/javascripts/thirdparty/jquery.cookie.js"></script>
+<script src="/javascripts/thirdparty/jplayer/jquery.jplayer.min.js"></script>
+<script src='/javascripts/thirdparty/moment.min.js'></script>
+<script src='/javascripts/jotlee/utils.js'></script>
+<script src='/javascripts/jotlee/jot_name_cache.js'></script>
+<script src='/javascripts/jotlee/jot_cache.js'></script>
+<script src='/javascripts/jotlee/jotlee_client.js'> </script>
+<script src='/javascripts/jotlee/teams_client.js'></script>
+<script src='/javascripts/jotlee/tlists_client.js'></script>
+<script src='/javascripts/jotlee/jot.js'></script>
+
+<script src='/javascripts/thirdparty/jquery.mockjax.js'></script>
+<script src='/javascripts/mock/jotlee_mock.js'></script>
+
+    </head>
+    <body class='content'>
+    	
+   		   	<table class='maintable'>
+    	<tr>
+    		<td colspan='2' width='100%' valign='center' class='toppanel'>
+    			&nbsp;&nbsp;
+    			<span style='color:white; font-weight:bold;font-size: smaller' id='currentuser'>
+    			...
+    			</span>
+   				&nbsp;&nbsp;
+    			<a href='#' id='teamslink' class='toplink'>teams</a>
+    			&nbsp;&nbsp;
+    			<a href='#' id='tlistslink' class='toplink'>todo lists</a>
+    			&nbsp;&nbsp;    				    			    				
+    			<a href='/logout' class='toplink'>logout</a>
+    			&nbsp;&nbsp;&nbsp;&nbsp;
+    			<span id='conn'>&nbsp;</span>
+    			<span id='clock'></span>
+    		</td>
+    	</tr>
+    	<tr>
+    		<td width='50%'>
+	   		<textarea name='myjot' id='myjot' style='width:95%' rows='3'>Just jot here</textarea>
+    		</td>
+    		<td width='50%' valign='center'>
+    		<input type='text' style='width:95%' name='search' id='search' value='search for jots...'/>
+    		</td>
+    	</tr>
+    	<tr>
+    	   <td colspan='2'>
+    	<div class='jotsbox' id='popupbox'>
+    	<div id='teamsbox'>
+    	<div style='text-align:left' class='jotshead'>
+				<a id='teamsclose' class='buttonlink buttonlinkhover' href='#'>[x close]</a>    	        
+    	    	<span>&nbsp;Teams&nbsp;</span>
+    	    	<span id='teamsmsg'></span>
+    	</div>
+    	</div>
+    	<div id='tlistsbox'>
+    	<div style='text-align:left' class='jotshead'>
+				<a id='tlistsclose' class='buttonlink buttonlinkhover' href='#'>[x close]</a>    	       
+    	    	<span>&nbsp;Todo lists&nbsp;</span>
+    	    	<span id='tlistsmsg'></span>
+    	</div>
+    	</div>
+    	</div>
+    	   </td>
+    	</tr>
+    	<tr>
+    	<td width='50%' valign='top'>
+    	<div class='jotbox' id='ljotsbox'>
+    	<div class='jotshead'>&nbsp;&nbsp; Recent jots</div>
+    	<div id='pendingjots'>
+    	</div>	    		
+    	<div id='recentjots'>
+    	</div>
+    	</div>
+    	</td>
+    	<td width='50%' valign='top' >
+    	<div class='jotbox'>
+    	<div class='jotshead'>&nbsp;&nbsp; <span>Upcoming jots</span> <span id='expiryinfo'></span></div>    		
+    	<div id='upcomingjots'>
+    	</div>	
+    	</div>
+    	</td>
+    	</tr>
+    	</table>
+    	<div id='alarm' style='width:0px;height:0px'></div>
+    </body>
+</html>

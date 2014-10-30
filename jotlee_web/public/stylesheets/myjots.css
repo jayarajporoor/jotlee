@@ -1,0 +1,314 @@
+@font-face {
+font-family: justjot;
+src: url("/resources/ColabLig-webfont.eot?") format("eot"), url("/resources/ColabLig-webfont.woff") format("woff"), url("/resources/ColabLig-webfont.ttf") format("truetype"); 
+}
+
+.content {
+font-family: justjot; 
+font-size: 12pt; 
+text-align:justify; 
+font-weight: 100
+}
+
+.jotbox
+{
+	border-color: black;
+	border-width: 1px;
+	border-style: solid;
+	/*border-radius: 5px;*/
+	background-color:white
+}
+
+.approvepending{
+	/*background-color: #f1f1f1;*/
+/*	margin: 5px;*/
+	border-bottom:3px ridge #c0c0c0;
+}
+
+.approvepending:hover{
+	background-color: #f1f1f1
+}
+
+.jotdetails{
+	/*background-color: #f1f1f1;*/
+	font-size: 11pt
+}
+
+.jotxt
+{
+/*background-color: #ffff80;*/
+background-color: #DDEEF6;
+}
+
+.acceptpending{
+/*	background-color: #D2DBEE; */
+	/*margin: 5px;*/
+	font-size: 12pt;
+	border-bottom:1px solid #c0c0c0;	
+}
+
+.acceptpending:hover
+{
+background-color: #f1f1f1;
+}
+
+.accepted{
+	/*background-color: #eaffea;*/
+/*	margin: 5px;*/
+	font-size: 12pt;
+	border-bottom:1px solid #c0c0c0;	
+}
+
+.accepted:hover
+{
+background-color: #f1f1f1;
+}
+
+.jotshead{
+/*	font-weight: bold;
+	color: #515151;*/
+	background-color: #002540;
+	color: white;
+}
+
+.toppanel{
+	/*background-color: #515151;*/
+	background-color: #002540;
+	/*border-radius: 5px;*/	 
+	height: 1.5em;
+}
+#myjot
+{
+	border-radius: 5px;
+}
+#search
+{
+	border-radius: 5px;	
+}
+textarea
+{
+	resize:none
+}
+
+#recentjots
+{
+background-color:white;
+}
+#upcomingjots
+{
+background-color:white;
+}
+body
+{
+ background-color: #DDEEF6;
+}
+
+.ownerinfo
+{
+   font-weight:bold;
+   color: #333333;
+   padding-bottom: 5px
+}
+
+.simplelink
+{
+text-decoration:none;
+font-size: 11pt;
+}
+.simplelink:hover
+{
+  text-decoration: underline
+}
+
+.usernotaccepted
+{
+color: red
+}
+
+.useraccepted
+{
+color: black
+}
+.usercanceled
+{
+text-decoration: line-through
+}
+.userdone
+{
+/*color: #004600*/
+  color: green;
+  /*font-weight: bold*/
+}
+
+#expiryinfo
+{
+	cursor: pointer; 
+	cursor: hand;
+}
+
+.toplink
+{
+    color:white; 
+    font-weight:bold;
+    font-size: smaller; 
+    text-decoration:none
+}
+
+.toplink:hover
+{
+   text-decoration: underline;
+}
+
+#conn
+{
+    color:white; 
+    font-weight:bold;
+    font-size: smaller; 
+    text-decoration:none
+}
+
+#clock
+{
+    color:white; 
+    font-size: smaller; 
+    text-decoration:none;
+    font-weight: bold;
+    float:right
+}
+
+#ljotsbox
+{
+    position: relative;
+}
+
+#popupbox
+{
+    position: relative;
+}
+
+#teamsbox, #tlistsbox
+{
+    position: absolute;
+    top:0;
+    left:0;
+    background-color:white;
+	border-color: black;
+	border-width: 1px;
+	border-style: solid;
+/*	border-radius: 5px;*/
+	z-index: 100;
+	display: none;
+	width: 100%
+}
+
+#teamsmsg, #tlistsmsg
+{
+	color: red
+}
+
+
+.maintable
+{
+	margin-left: auto;
+	margin-right: auto;
+	width:900px; 
+}
+
+/*Test items*/
+
+
+
+.ownerlink
+{
+text-decoration:none;
+color: #373737
+}
+
+.ownername
+{
+	color:#B2B3B2;
+}
+
+.ownerlink:hover
+{
+  text-decoration: underline
+}
+
+.skimmedjot{
+
+}
+
+.receivedinfo{
+	float: right;
+	color: #828282;	
+}
+
+.expiryinfo{
+	font-weight: normal
+}
+
+.peopleinfo
+{
+	font-size: 11pt;
+	text-align:justify; 
+	border-top: dashed; 
+	border-top-width:1px; 
+	border-top-color:#C0C0C0; 
+	padding-left:5px	
+}
+
+.canceledjot
+{
+	color: #C0C0C0
+}
+.actionbuttons
+{
+	float:right;
+}
+
+.actionbutton
+{
+	background-color: #50B2FF;
+	color: white;
+	font-size: 11pt
+}
+
+.actionbutton:hover
+{
+	border-color: #003A6F;
+	border-style: solid;
+	border-width: 1px;
+	cursor: pointer;
+	cursor: hand
+}
+
+.disabledactionbutton
+{
+	background-color: #C0C0C0;
+	color: white;
+	font-size: 11pt
+}
+
+.disabledactionbutton:hover
+{
+	border-color: #003A6F;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.buttonlink
+{
+	text-decoration: none;
+	color: white;
+}
+
+.buttonlinkhover:hover
+{
+	text-decoration: underline;
+}
+
+.teamhead:hover
+{
+	cursor: hand;
+	cursor: pointer;
+}

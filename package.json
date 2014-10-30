@@ -1,0 +1,25 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+	"connect": "2.7.11",	  
+    "express": "3.2.6",
+    "ejs": "*",
+    "passport" : "~0.1.17",
+    "passport-google" : "~0.3.0",
+    "passport-facebook" : "~0.1.5",
+    "passport-twitter" : "~0.1.5",
+    "engine.io" : "0.6.2",
+    "underscore" : "1.4.4",
+    "redis" : "0.8.x",
+    "connect-redis": "1.4.5",
+     "mysql" : "2.0.0-alpha8",
+	 "generic-pool" : "2.0.3",
+	 "moment" : "2.0.0",
+	 "winston" : "0.7.2"
+  }
+}
